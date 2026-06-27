@@ -2,12 +2,12 @@ import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-sidebar',
+  selector: 'app-navbar',
   imports: [],
-  templateUrl: './sidebar.html',
-  styleUrl: './sidebar.css',
+  templateUrl: './navbar.html',
+  styleUrl: './navbar.css',
 })
-export class Sidebar {
+export class Navbar {
   router = inject(Router);
   isShow: WritableSignal<boolean> = signal(true);
 

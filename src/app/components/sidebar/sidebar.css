@@ -1,0 +1,10 @@
+.sidebar-container {
+  width: 20vw;
+  height: 100vh;
+  overflow-y: scroll;
+  background-color: white;
+}
+
+.sidebar-container::-webkit-scrollbar {
+  display: none;
+}
