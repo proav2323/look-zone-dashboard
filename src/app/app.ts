@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject, Signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Sidebar } from './components/sidebar/sidebar';
 import { Users } from './services/users';
 import { routes } from './app.routes';
 import { Navbar } from './components/navbar/navbar';
+import { Sidebar as SidebarService } from './services/sidebar/sidebar';
+import { Sidebar } from './components/sidebar/sidebar';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,8 @@ import { Navbar } from './components/navbar/navbar';
   styleUrl: './app.css',
 })
 export class App {
+  sidebarService = inject(SidebarService);
+  isOpen: Signal<boolean> = computed(() => this.sidebarService.isOpen());
   constructor(userService: Users) {
     userService.auth();
   }

@@ -1,12 +1,24 @@
 .sidebar-container {
-  width: 20vw;
   height: 100vh;
-  overflow-y: scroll;
-  background-color: var(--bg-secondary);
-  border-right: 1px solid var(--bg-surface);
   position: sticky;
   left: 0px;
-  padding: 10px;
+  top: 0px;
+  background-color: var(--bg-secondary);
+  border-right: 1px solid var(--bg-surface);
+  padding-left: 10px;
+  padding-right: 10px;
+  z-index: 5;
+  transition: all ease-in-out 0.5s;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.open {
+  width: 20vw;
+}
+
+.close {
+  width: 5vw;
 }
 
 .sidebar-container::-webkit-scrollbar {
@@ -15,4 +27,32 @@
 
 .content {
   margin-top: 10px;
+}
+
+.logo {
+  margin: 0px;
+}
+
+.open-logo {
+  height: 70px;
+}
+
+.close-logo {
+  height: 50px;
+}
+
+.logo-block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0px;
+  height: 45px;
+  border-bottom: 1px solid var(--bg-surface);
+  padding: 10px;
+  position: sticky;
+  top: 0px;
+  left: 0px;
+  transition: all ease-in-out 0.5s;
 }

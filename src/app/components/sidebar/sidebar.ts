@@ -1,5 +1,6 @@
-import { Component, inject, signal, WritableSignal } from '@angular/core';
+import { Component, computed, inject, Signal, signal, WritableSignal } from '@angular/core';
 import { Router } from '@angular/router';
+import { Sidebar as sidebar } from '../../services/sidebar/sidebar';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,7 +10,9 @@ import { Router } from '@angular/router';
 })
 export class Sidebar {
   router = inject(Router);
+  sidebarService = inject(sidebar);
   isShow: WritableSignal<boolean> = signal(true);
+  isOpen: Signal<boolean> = computed(() => this.sidebarService.isOpen());
 
   constructor() {
     this.router.events.subscribe(() => {

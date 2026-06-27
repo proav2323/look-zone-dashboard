@@ -1,8 +1,46 @@
 @if (isShow() === true) {
   <nav class="nav">
-    <div class="logo-block">
-      <img src="logo.png" class="logo" />
+    <div class="actions">
+      <div class="search-container">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="format_list_bulleted"
+          class="close"
+          (click)="toggle()"
+        ></mat-icon>
+        <div class="search-block">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="search"
+            class="close"
+          ></mat-icon>
+          <input type="search" class="search" placeholder="Search Anything" />
+        </div>
+      </div>
+      <div class="user-container">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="notifications_none"
+          class="close icon"
+        ></mat-icon>
+        <div class="user-block">
+          <span class="username">
+            {{ user()?.name }}
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Example home icon"
+              fontIcon="keyboard_arrow_down"
+              class="close"
+            ></mat-icon>
+          </span>
+          <span class="role">{{
+            user()?.admin ? 'ADMIN' : user()?.canEdit ? 'EDITOR' : 'VIEWER'
+          }}</span>
+        </div>
+      </div>
     </div>
-    <div class="actions"></div>
   </nav>
 }

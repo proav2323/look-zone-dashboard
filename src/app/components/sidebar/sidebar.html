@@ -1,3 +1,8 @@
 @if (isShow() === true) {
-  <div class="sidebar-container"><div class="content">sidebar works</div></div>
+  <div [class]="isOpen() === true ? 'sidebar-container open' : 'sidebar-container close'">
+    <div [class]="isOpen() === true ? 'logo-block open' : 'logo-block close'">
+      <img src="logo.png" [class]="isOpen() === true ? 'logo open-logo' : 'logo close-logo'" />
+    </div>
+    <div class="content"></div>
+  </div>
 }
