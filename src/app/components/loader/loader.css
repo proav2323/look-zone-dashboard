@@ -24,7 +24,7 @@
   width: 5vw;
   height: 5vw;
   border-radius: 50%;
-  border: 5px solid #1e293b; /* save color */
-  border-top: 5px solid #f9fafb; /* save color */
-  animation: loader ease-in-out 1s;
+  border: 5px solid var(--text-primary); /* save color */
+  border-top: 5px solid var(--border-color); /* save color */
+  animation: loader ease-in-out 1s infinite;
 }
