@@ -17,7 +17,7 @@ export class Users {
   auth() {
     if (this.token === null) {
       const loginPath = this.router.parseUrl('/login');
-      new RedirectCommand(loginPath, { skipLocationChange: true });
+      this.router.navigateByUrl(loginPath, { skipLocationChange: false });
       return;
     }
     this.isLoading.set(true);
