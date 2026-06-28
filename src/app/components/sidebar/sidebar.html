@@ -1,8 +1,135 @@
-@if (isShow() === true) {
+@if (isShow() === true && isUserLoading() === false) {
   <div [class]="isOpen() === true ? 'sidebar-container open' : 'sidebar-container close'">
     <div [class]="isOpen() === true ? 'logo-block open' : 'logo-block close'">
       <img src="logo.png" [class]="isOpen() === true ? 'logo open-logo' : 'logo close-logo'" />
     </div>
-    <div class="content"></div>
+    <div class="content">
+      <button
+        (click)="redirect('/admin')"
+        [class]="
+          url() === '/admin' || url() === '/admin/dashboard'
+            ? 'sidebar-btn selected'
+            : 'sidebar-btn'
+        "
+      >
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="dashboard"
+          class="btn-icon"
+        ></mat-icon
+        >{{ isOpen() ? 'Dashboard' : '' }}
+      </button>
+      <span [class]="isOpen() ? 'info-span' : 'none'">Manage</span>
+      <button
+        [class]="url() === '/admin/orders' ? 'sidebar-btn selected' : 'sidebar-btn'"
+        (click)="redirect('/admin/orders')"
+      >
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="shopping_cart"
+          class="btn-icon"
+        ></mat-icon
+        >{{ isOpen() ? 'Orders' : '' }}
+      </button>
+      <button
+        [class]="url() === '/admin/products' ? 'sidebar-btn selected' : 'sidebar-btn'"
+        (click)="redirect('/admin/products')"
+      >
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="production_quantity_limits"
+          class="btn-icon"
+        ></mat-icon
+        >{{ isOpen() ? 'Products' : '' }}
+      </button>
+      <button
+        [class]="url() === '/admin/categories' ? 'sidebar-btn selected' : 'sidebar-btn'"
+        (click)="redirect('/admin/categories')"
+      >
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="space_dashboard"
+          class="btn-icon"
+        ></mat-icon
+        >{{ isOpen() ? 'Categories' : '' }}
+      </button>
+      <button
+        [class]="url() === '/admin/customers' ? 'sidebar-btn selected' : 'sidebar-btn'"
+        (click)="redirect('/admin/customers')"
+      >
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="supervised_user_circle"
+          class="btn-icon"
+        ></mat-icon
+        >{{ isOpen() ? 'Customers' : '' }}
+      </button>
+      <button
+        [class]="url() === '/admin/reviews' ? 'sidebar-btn selected' : 'sidebar-btn'"
+        (clikc)="redirect('/admin/reviews')"
+      >
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="star"
+          class="btn-icon"
+        ></mat-icon
+        >{{ isOpen() ? 'Reviews' : '' }}
+      </button>
+      <button
+        [class]="url() === '/admin/reports' ? 'sidebar-btn selected' : 'sidebar-btn'"
+        (click)="redirect('/admin/reports')"
+      >
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="stacked_bar_chart"
+          class="btn-icon"
+        ></mat-icon
+        >{{ isOpen() ? 'Reports' : '' }}
+      </button>
+      <span [class]="isOpen() ? 'info-span' : 'none'">Settings</span>
+      <button
+        [class]="url() === '/admin/settings' ? 'sidebar-btn selected' : 'sidebar-btn'"
+        (click)="redirect('/admin/settings')"
+      >
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="settings"
+          class="btn-icon"
+        ></mat-icon
+        >{{ isOpen() ? 'Settings' : '' }}
+      </button>
+      <button
+        [class]="url() === '/admin/roles' ? 'sidebar-btn selected' : 'sidebar-btn'"
+        (click)="redirect('/admin/roles')"
+      >
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="supervisor_account"
+          class="btn-icon"
+        ></mat-icon
+        >{{ isOpen() ? 'User and Roles' : '' }}
+      </button>
+      <button
+        [class]="url() === '/admin/billing' ? 'sidebar-btn selected' : 'sidebar-btn'"
+        (click)="redirect('/admin/billing')"
+      >
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="credit_card"
+          class="btn-icon"
+        ></mat-icon
+        >{{ isOpen() ? 'Billing' : '' }}
+      </button>
+    </div>
   </div>
 }

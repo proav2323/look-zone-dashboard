@@ -29,55 +29,7 @@
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.25);
   --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.35);
-
-  /* Border Radius */
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
 }
-/*  light mode colors
---bg-primary: #F8FAFC;        
-  --bg-secondary: #FFFFFF;      
-  --bg-surface: #F1F5F9;        
-
-  --color-primary: #6D28D9;     
-  --color-secondary: #2563EB;   
-
-  --color-success: #16A34A;    
-  --color-warning: #D97706;     
-  --color-danger: #DC2626;      
-
-  --text-primary: #0F172A;      
-  --text-secondary: #64748B;  
-
-  --border-color: #E2E8F0;
-
-  --gradient-primary: linear-gradient(
-    135deg,
-    #6D28D9,
-    #2563EB
-  );
-
-  --gradient-success: linear-gradient(
-    135deg,
-    #16A34A,
-    #0D9488
-  );
-
-  --gradient-premium: linear-gradient(
-    135deg,
-    #FFFFFF,
-    #EEF2FF
-  );
-
-  --shadow-sm: 0 2px 8px rgba(15,23,42,0.08);
-  --shadow-md: 0 8px 24px rgba(15,23,42,0.12);
-  --shadow-lg: 0 20px 40px rgba(15,23,42,0.16);
-
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 24px; 
-  */
 
 body {
   margin: 0px 0px 0px 0px;
@@ -88,4 +40,5 @@ body {
   border: none;
   background-color: var(--bg-primary);
   color: var(--text-primary);
+  z-index: 1;
 }

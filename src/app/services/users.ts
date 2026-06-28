@@ -36,7 +36,7 @@ export class Users {
         }
         this.isLoading.set(false);
         const loginPath = this.router.parseUrl('/login');
-        new RedirectCommand(loginPath, { skipLocationChange: true });
+        this.router.navigateByUrl(loginPath, { skipLocationChange: false });
       },
     });
   }

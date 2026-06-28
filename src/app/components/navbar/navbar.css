@@ -23,7 +23,7 @@
   padding-top: 10px;
   padding-bottom: 10px;
   margin: 0px;
-  margin-left: 8px;
+  margin-left: 15px;
 }
 
 .search-container {
@@ -31,7 +31,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  width: 25%;
+  width: 30%;
 }
 
 .close {
@@ -86,8 +86,8 @@
 
 .icon:hover {
   background-color: var(--bg-surface);
-  -webkit-box-shadow: 1px -1px 8px 0px rgba(0, 0, 0, 0.68);
-  box-shadow: 1px -1px 8px 0px rgba(0, 0, 0, 0.68);
+  -webkit-box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-sm);
 }
 
 .user-block {
@@ -108,4 +108,56 @@
 .role {
   font-size: 10px;
   color: var(--text-secondary);
+}
+
+.dropdown {
+  position: absolute;
+  background-color: var(--bg-surface);
+  padding: 10px;
+  border-radius: 10px;
+  top: 70px;
+  transition: all ease-in-out 0.25s;
+}
+
+.open-drop {
+  opacity: 1;
+  display: block;
+}
+
+.close-drop {
+  opacity: 0;
+  display: none;
+}
+
+.dropdown-btn {
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: var(--bg-secondary);
+  transition: all ease-in-out 0.25s;
+  border: none;
+  outline: none;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-primary);
+  font-weight: bolder;
+}
+
+.dropdown-btn:hover {
+  background-color: var(--bg-primary);
+  -webkit-box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+}
+
+.logout {
+  background-color: red;
+}
+
+.btn-icon {
+  margin-right: 5px;
+  color: var(--text-primary);
 }

@@ -1,4 +1,4 @@
-@if (isShow() === true) {
+@if (isShow() === true && isUserLoading() === false) {
   <nav class="nav">
     <div class="actions">
       <div class="search-container">
@@ -19,28 +19,60 @@
           <input type="search" class="search" placeholder="Search Anything" />
         </div>
       </div>
-      <div class="user-container">
-        <mat-icon
-          aria-hidden="false"
-          aria-label="Example home icon"
-          fontIcon="notifications_none"
-          class="close icon"
-        ></mat-icon>
-        <div class="user-block">
-          <span class="username">
-            {{ user()?.name }}
-            <mat-icon
-              aria-hidden="false"
-              aria-label="Example home icon"
-              fontIcon="keyboard_arrow_down"
-              class="close"
-            ></mat-icon>
-          </span>
-          <span class="role">{{
-            user()?.admin ? 'ADMIN' : user()?.canEdit ? 'EDITOR' : 'VIEWER'
-          }}</span>
+      @if (user()) {
+        <div class="user-container">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="notifications_none"
+            class="close icon"
+          ></mat-icon>
+          <div class="user-block" (click)="toggleDropdown()">
+            <span class="username">
+              {{ user()?.name }}
+              <mat-icon
+                aria-hidden="false"
+                aria-label="Example home icon"
+                fontIcon="keyboard_arrow_down"
+                class="close"
+              ></mat-icon>
+            </span>
+            <span class="role">{{
+              user()?.admin ? 'ADMIN' : user()?.canEdit ? 'EDITOR' : 'VIEWER'
+            }}</span>
+          </div>
+          <div [class]="isDropdownOpen() ? 'dropdown open-drop' : 'dropdown close-drop'">
+            <button class="dropdown-btn" (click)="toggleTheme()">
+              @if (theme() === 'dark') {
+                <mat-icon
+                  aria-hidden="false"
+                  aria-label="Example home icon"
+                  fontIcon="light_mode"
+                  class="btn-icon"
+                ></mat-icon
+                >Light Mode
+              } @else {
+                <mat-icon
+                  aria-hidden="false"
+                  aria-label="Example home icon"
+                  fontIcon="dark_mode"
+                  class="btn-icon"
+                ></mat-icon
+                >Dark Mode
+              }
+            </button>
+            <button class="dropdown-btn logout">
+              <mat-icon
+                aria-hidden="false"
+                aria-label="Example home icon"
+                fontIcon="logout"
+                class="btn-icon"
+              ></mat-icon
+              >Logout
+            </button>
+          </div>
         </div>
-      </div>
+      }
     </div>
   </nav>
 }

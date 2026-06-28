@@ -25,10 +25,6 @@
   display: none;
 }
 
-.content {
-  margin-top: 10px;
-}
-
 .logo {
   margin: 0px;
 }
@@ -55,4 +51,49 @@
   top: 0px;
   left: 0px;
   transition: all ease-in-out 0.5s;
+}
+
+.sidebar-btn {
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  align-items: center;
+  justify-content: start;
+  background-color: var(--bg-surface);
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  color: var(--text-primary);
+  font-weight: 700;
+  margin-top: 10px;
+  transition: all ease-in-out 0.25s;
+}
+
+.sidebar-btn:hover {
+  cursor: pointer;
+}
+.selected {
+  background: var(--gradient-primary);
+  font-weight: bolder;
+}
+
+.btn-icon {
+  color: var(--text-primary);
+  margin-right: 8px;
+}
+
+.info-span {
+  color: var(--text-secondary);
+  display: block;
+  width: 100%;
+  height: fit-content;
+  margin-top: 10px;
+  opacity: 1;
+  transition: all ease-in-out 0.5s;
+}
+
+.none {
+  opacity: 0;
 }
