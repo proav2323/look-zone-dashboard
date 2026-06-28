@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { Login } from './components/login/login';
 import { authGuard } from './guards/auth/auth-guard';
 import { Home } from './components/home/home';
+import { Orders } from './components/orders/orders';
 
 export const routes: Routes = [
   { component: Login, path: 'login' },
@@ -10,8 +11,8 @@ export const routes: Routes = [
     path: 'admin',
     component: Home,
     children: [
-      { path: 'dashboard', redirectTo: '/' },
-      { path: 'orders', component: Home },
+      { path: 'dashboard', redirectTo: '/admin' },
+      { path: 'orders', component: Orders },
     ],
   },
 ];
