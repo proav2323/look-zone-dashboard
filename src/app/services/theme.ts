@@ -13,6 +13,7 @@ export class Theme {
   showUi() {
     if (this.theme() === 'dark') {
       document.documentElement.style.setProperty('--bg-primary', '#0b0f19');
+      document.documentElement.style.setProperty('--bg-dark', '#000617');
       document.documentElement.style.setProperty('--bg-secondary', '#111827');
       document.documentElement.style.setProperty('--bg-surface', '#1f2937');
       document.documentElement.style.setProperty('--color-primary', '#7c3aed');
@@ -40,6 +41,7 @@ export class Theme {
       document.documentElement.style.setProperty('--shadow-sm', '0 20px 40px rgba(0, 0, 0, 0.35)');
     } else {
       document.documentElement.style.setProperty('--bg-primary', '#F8FAFC');
+      document.documentElement.style.setProperty('--bg-dark', 'rgb(143, 149, 157)');
       document.documentElement.style.setProperty('--bg-secondary', '#FFFFFF');
       document.documentElement.style.setProperty('--bg-surface', '#F1F5F9');
       document.documentElement.style.setProperty('--color-primary', '#6D28D9');

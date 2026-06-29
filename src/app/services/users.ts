@@ -27,14 +27,19 @@ export class Users {
 
     req.subscribe({
       next: (data) => {
-        this.user.set(data);
-        this.isLoggedIn.set(true);
-        this.isLoading.set(false);
+        if (data.admin === true || data.canEdit === true || data.canView === true) {
+          this.user.set(data);
+          this.isLoggedIn.set(true);
+          this.isLoading.set(false);
+        } else {
+          this.isLoading.set(false);
+          localStorage.removeItem('token');
+          const loginPath = this.router.parseUrl('/login');
+          this.router.navigateByUrl(loginPath, { skipLocationChange: false });
+        }
       },
       error: (err: HttpErrorResponse | undefined) => {
-        if (err) {
-          console.log(err);
-        }
+        console.log(err);
         this.isLoading.set(false);
         const loginPath = this.router.parseUrl('/login');
         this.router.navigateByUrl(loginPath, { skipLocationChange: false });
