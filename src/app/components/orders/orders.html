@@ -1,1 +1,53 @@
-<p>orders works!</p>
+@if (isLoading() === true) {
+  <app-loader [size]="'large'"></app-loader>
+} @else if (error() !== null && orders().length === 0) {
+} @else {
+  <div class="container">
+    <div class="content">
+      <span class="heading">Orders</span>
+      <div class="cards">
+        <app-card
+          style="width: 100%"
+          [icon]="'shopping_cart'"
+          [iconBackgroundColor]="'#451d63'"
+          [iconColor]="'#9000ff'"
+          [text]="'Total Orders'"
+          [number]="`${orders().length}`"
+        ></app-card>
+        <app-card
+          style="width: 100%"
+          [icon]="'access_time'"
+          [iconBackgroundColor]="'#706b1c'"
+          [iconColor]="'yellow'"
+          [text]="'Pending Orders'"
+          [number]="`${orders().filter((data) => data.status === 'ordered' || data.status === 'processing').length}`"
+        ></app-card>
+        <app-card
+          style="width: 100%"
+          [icon]="'fire_truck'"
+          [iconBackgroundColor]="'#1c3470'"
+          [iconColor]="'blue'"
+          [text]="'Shipped Orders'"
+          [number]="`${orders().filter((data) => data.status === 'shipped').length}`"
+        ></app-card>
+        <app-card
+          style="width: 100%"
+          [icon]="'check'"
+          [iconBackgroundColor]="'#00400a'"
+          [iconColor]="'green'"
+          [text]="'Delivered Orders'"
+          [number]="`${orders().filter((data) => data.status === 'delivered' || data.status === 'returned' || data.status === 'return intiated').length}`"
+        ></app-card>
+        <app-card
+          style="width: 100%"
+          [icon]="'cancel'"
+          [iconBackgroundColor]="'#802f2f'"
+          [iconColor]="'red'"
+          [text]="'cancelled Orders'"
+          [number]="`${orders().filter((data) => data.status === 'canceled').length}`"
+        ></app-card>
+      </div>
+      <div class="filter"></div>
+    </div>
+  </div>
+}

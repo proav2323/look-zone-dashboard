@@ -1,0 +1,9 @@
+<div class="card">
+  <div class="icon-block" [style]="`background-color: ${iconBackgroundColor()}`">
+    <mat-icon [fontIcon]="icon()" class="icon" [style]="`color: ${iconColor()};`"></mat-icon>
+  </div>
+  <div class="text-block">
+    <span class="desc">{{ text() }}</span>
+    <span class="num">{{ number() }} </span>
+  </div>
+</div>

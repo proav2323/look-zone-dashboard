@@ -2,6 +2,7 @@ import { Service, signal, WritableSignal, inject } from '@angular/core';
 import { user } from '../../models/user';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { RedirectCommand, Router } from '@angular/router';
+import { API_URL } from '../../imp';
 
 @Service()
 export class Users {
@@ -9,8 +10,8 @@ export class Users {
   token: string | null = localStorage.getItem('token');
   isLoggedIn: WritableSignal<boolean> = signal(false);
   isLoading: WritableSignal<boolean> = signal(false);
+  API_URL = API_URL;
 
-  private API_URL = 'https://look-zone-backend.onrender.com';
   private http = inject(HttpClient);
   private router = inject(Router);
 

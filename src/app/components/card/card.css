@@ -1,0 +1,48 @@
+.card {
+  padding: 10px;
+  padding-right: 17px;
+  padding-left: 17px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: start;
+  background-color: var(--bg-surface);
+  margin: 10px;
+  width: auto;
+}
+
+.icon-block {
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+}
+
+.icon {
+  font-size: 30px;
+  width: 30px;
+  height: 30px;
+}
+
+.text-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  margin: 10px;
+}
+
+.desc {
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.num {
+  color: var(--text-primary);
+  font-size: 25px;
+  font-weight: bolder;
+  margin: 10px;
+}
