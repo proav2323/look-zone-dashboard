@@ -9,6 +9,9 @@
 .login-form {
   width: 100%;
   min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .info {
@@ -51,11 +54,65 @@
 }
 
 .text {
-  margin-top: 10px;
+  margin-top: 15px;
   color: var(--text-secondary);
 }
 
 .img {
   width: 100%;
   margin-top: 15px;
+}
+
+.form {
+  background-color: var(--bg-secondary);
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 10px;
+  padding-left: 10px;
+  width: 95%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.greeting {
+  margin-top: 10px;
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+.forgot {
+  color: var(--color-error);
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.forgot:hover {
+  cursor: pointer;
+}
+
+.submit-btn {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: var(--color-warning);
+  color: white;
+  font-size: 20px;
+  font-weight: bolder;
+  text-align: center;
+  width: 95%;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  transition: all ease-in-out 0.25s;
+}
+.submit-btn:hover {
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+.submit-btn:disabled {
+  cursor: not-allowed;
 }

@@ -9,5 +9,32 @@
       <img src="stock-login-ui.png" class="img" />
     </div>
   </div>
-  <div class="login-form"></div>
+  <div class="login-form">
+    <form class="form" (submit)="submit($event)">
+      <span class="greeting">Welcome Back</span>
+      <span class="text">login to access your LookZone Dashboard</span>
+      <app-field
+        style="width: 95%; margin-top: 10px"
+        [icon]="'email'"
+        [Field]="loginForm.email"
+        [placeholder]="'Email'"
+        [type]="'email'"
+      ></app-field>
+      <app-field
+        style="width: 95%; margin-top: 10px"
+        [icon]="'password'"
+        [Field]="loginForm.password"
+        [placeholder]="'Password'"
+        [type]="'password'"
+      ></app-field>
+      <span class="forgot">Forgot Password</span>
+      @if (isLoading() === true && loginForm().invalid() === false) {
+        <button class="submit-btn">
+          <app-loader [size]="'small'" [width]="'2'"></app-loader>
+        </button>
+      } @else {
+        <button class="submit-btn" type="submit" [disabled]="loginForm().invalid()">Login</button>
+      }
+    </form>
+  </div>
 </div>

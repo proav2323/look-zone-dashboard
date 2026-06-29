@@ -8,4 +8,5 @@ import { Component, input, InputSignal } from '@angular/core';
 })
 export class Loader {
   size: InputSignal<'small' | 'large'> = input<'large' | 'small'>('large');
+  width: InputSignal<string> = input('');
 }

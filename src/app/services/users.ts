@@ -15,7 +15,7 @@ export class Users {
   private http = inject(HttpClient);
   private router = inject(Router);
 
-  auth() {
+  auth(fromLogin?: boolean) {
     if (this.token === null) {
       const loginPath = this.router.parseUrl('/login');
       this.router.navigateByUrl(loginPath, { skipLocationChange: false });
@@ -34,20 +34,39 @@ export class Users {
         } else {
           this.isLoading.set(false);
           localStorage.removeItem('token');
-          const loginPath = this.router.parseUrl('/login');
-          this.router.navigateByUrl(loginPath, { skipLocationChange: false });
+          if (fromLogin === false || fromLogin === undefined) {
+            const loginPath = this.router.parseUrl('/login');
+            this.router.navigateByUrl(loginPath, { skipLocationChange: false });
+          }
         }
       },
       error: (err: HttpErrorResponse | undefined) => {
         console.log(err);
         this.isLoading.set(false);
-        const loginPath = this.router.parseUrl('/login');
-        this.router.navigateByUrl(loginPath, { skipLocationChange: false });
+        if (fromLogin === false || fromLogin === undefined) {
+          const loginPath = this.router.parseUrl('/login');
+          this.router.navigateByUrl(loginPath, { skipLocationChange: false });
+        }
       },
     });
   }
 
-  login() {}
+  login(email: string, password: string) {
+    this.isLoading.set(true);
+    this.http
+      .post<string>(`${API_URL}/auth/login`, { email: email, password: password })
+      .subscribe({
+        next: (token) => {
+          localStorage.setItem('token', token);
+          this.token = token;
+          this.auth(true);
+        },
+        error: (err) => {
+          this.isLoading.set(false);
+          console.log(err);
+        },
+      });
+  }
   getUserByid() {}
   changeRoles() {}
 }

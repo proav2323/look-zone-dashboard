@@ -1,5 +1,12 @@
 <div class="loader-container">
   <div [class]="size() === 'large' ? 'loader-block' : 'small loader-block'">
-    <div class="loader"></div>
+    <div
+      class="loader"
+      [style]="
+        width() !== undefined && width() !== null && width() !== ''
+          ? `width: ${width()}vw; height: ${width()}vw`
+          : 'width: 5vw; height: 5vw'
+      "
+    ></div>
   </div>
 </div>

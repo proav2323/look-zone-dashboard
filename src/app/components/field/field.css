@@ -1,0 +1,53 @@
+.field-block {
+  background-color: var(--bg-surface);
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+  font-size: 25px;
+  color: var(--text-secondary);
+  padding: 10px;
+}
+
+.input {
+  outline: none;
+  border: none;
+  background: transparent;
+  padding: 10px;
+  width: 100%;
+  color: var(--text-primary);
+  font-size: 15px;
+}
+
+.input::placeholder {
+  color: var(--text-secondary);
+}
+
+.pass {
+  width: 15px;
+  height: 15px;
+  font-size: 15px;
+}
+
+.pass:hover {
+  cursor: pointer;
+}
+
+.error {
+  margin-top: 2px;
+  width: 100%;
+}
+
+.error-text {
+  color: red;
+  font-size: 15px;
+  text-align: start;
+}

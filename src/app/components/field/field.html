@@ -1,0 +1,23 @@
+<div class="field-block">
+  <mat-icon [fontIcon]="icon" class="icon"></mat-icon>
+  <input
+    class="input"
+    [type]="inputType() === undefined ? type : inputType()"
+    [formField]="Field"
+    [placeholder]="placeholder"
+  />
+  @if (type === 'password') {
+    <mat-icon
+      (click)="togglePassword()"
+      [fontIcon]="inputType() === 'text' ? 'cancel' : 'remove_red_eye'"
+      class="icon pass"
+    ></mat-icon>
+  }
+</div>
+@if (Field().invalid() && Field().touched()) {
+  <div class="error">
+    @for (error of Field().errors(); track error.kind) {
+      <span class="error-text">{{ error.message }}</span>
+    }
+  </div>
+}

@@ -21,8 +21,6 @@
 }
 
 .loader {
-  width: 5vw;
-  height: 5vw;
   border-radius: 50%;
   border: 5px solid var(--text-primary); /* save color */
   border-top: 5px solid var(--border-color); /* save color */
