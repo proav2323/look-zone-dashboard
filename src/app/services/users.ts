@@ -48,7 +48,6 @@ export class Users {
   }
 
   login() {}
-  signUp() {}
   getUserByid() {}
   changeRoles() {}
 }
