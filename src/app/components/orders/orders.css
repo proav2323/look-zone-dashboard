@@ -30,3 +30,13 @@
   flex-wrap: nowrap;
   width: 100%;
 }
+
+.filter {
+  width: 100%;
+  background-color: var(--bg-surface);
+  border-radius: 10px;
+  padding: 10px;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-top: 10px;
+}
