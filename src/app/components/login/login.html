@@ -28,6 +28,7 @@
         [type]="'password'"
       ></app-field>
       <span class="forgot">Forgot Password</span>
+
       @if (isLoading() === true && loginForm().invalid() === false) {
         <button class="submit-btn">
           <app-loader [size]="'small'" [width]="'2'"></app-loader>

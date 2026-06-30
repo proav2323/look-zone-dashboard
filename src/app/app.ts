@@ -6,10 +6,11 @@ import { Navbar } from './components/navbar/navbar';
 import { Sidebar as SidebarService } from './services/sidebar/sidebar';
 import { Sidebar } from './components/sidebar/sidebar';
 import { Theme } from './services/theme';
+import { Toast } from './components/toast/toast';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Sidebar, Navbar],
+  imports: [RouterOutlet, Sidebar, Navbar, Toast],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

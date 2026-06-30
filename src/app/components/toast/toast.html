@@ -1,1 +1,6 @@
-<p>toast works!</p>
+@if (showToast() === true) {
+  <div [class]="type() === 'success' ? 'toast-container success' : 'toast-container error'">
+    <span class="toaster-msg">{{ message() }}</span>
+    <mat-icon fontIcon="cancel" (click)="closeToast()" class="icon"></mat-icon>
+  </div>
+}

@@ -13,6 +13,7 @@ import { MatIcon } from '@angular/material/icon';
 import { Field } from '../field/field';
 import { Users } from '../../services/users';
 import { Loader } from '../loader/loader';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -29,6 +30,7 @@ export class Login {
     required(path.password, { message: 'please enter your password' });
   });
   usersService = inject(Users);
+  router = inject(Router);
 
   isLoading = computed(() => this.usersService.isLoading());
   constructor() {}

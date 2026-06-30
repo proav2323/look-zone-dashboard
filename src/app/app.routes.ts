@@ -3,9 +3,10 @@ import { Login } from './components/login/login';
 import { authGuard } from './guards/auth/auth-guard';
 import { Home } from './components/home/home';
 import { Orders } from './components/orders/orders';
+import { loginGuard } from './guards/login-guard';
 
 export const routes: Routes = [
-  { component: Login, path: 'login' },
+  { component: Login, path: 'login', canActivate: [loginGuard] },
   { path: '', redirectTo: 'admin', pathMatch: 'full' },
   {
     path: 'admin',
