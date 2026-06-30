@@ -47,7 +47,39 @@
           [number]="`${orders().filter((data) => data.status === 'canceled').length}`"
         ></app-card>
       </div>
-      <div class="filter"></div>
+      <div class="filter">
+        <div class="status">
+          <select
+            class="status-filter"
+            [formControl]="select"
+            [disabled]="isLoading() || isUserLoading()"
+          >
+            @for (stat of status; track stat) {
+              <option class="status-option" [value]="stat">
+                {{ stat }}
+              </option>
+            }
+          </select>
+          <mat-icon [fontIcon]="'keyboard_arrow_down'" class="select-icon"></mat-icon>
+        </div>
+        <div class="date-block">
+          <div class="date">
+            <input
+              [formControl]="dateStart"
+              class="date-picker"
+              [style]="theme() === 'light' ? 'color-scheme: light' : 'color-scheme: dark'"
+              type="date"
+            />-
+            <input
+              [formControl]="dateEnd"
+              class="date-picker"
+              [style]="theme() === 'light' ? 'color-scheme: light' : 'color-scheme: dark'"
+              type="date"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="orders-block"></div>
     </div>
   </div>
 }

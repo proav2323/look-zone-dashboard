@@ -30,4 +30,23 @@ export class OrdersService {
       },
     });
   }
+
+  getFilterOrders(status: string | null, dateStart: Date | null, dateEnd: Date | null) {
+    if (!this.token) {
+      return;
+    }
+    // this.isLoading.set(true);
+    let newHeaders = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    // this.httpClient.get<order[]>(`${this.API_URL}/orders/`, { headers: newHeaders }).subscribe({
+    //   next: (data) => {
+    //     this.errorOccured.set(null);
+    //     this.orders.set(data);
+    //     this.isLoading.set(false);
+    //   },
+    //   error: (err) => {
+    //     this.errorOccured.set(err.message);
+    //     this.isLoading.set(false);
+    //   },
+    // });
+  }
 }

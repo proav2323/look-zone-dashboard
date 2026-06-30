@@ -22,7 +22,7 @@
       </button>
       <span [class]="isOpen() ? 'info-span' : 'none'">Manage</span>
       <button
-        [class]="url() === '/admin/orders' ? 'sidebar-btn selected' : 'sidebar-btn'"
+        [class]="url().startsWith('/admin/orders') ? 'sidebar-btn selected' : 'sidebar-btn'"
         (click)="redirect('/admin/orders')"
       >
         <mat-icon

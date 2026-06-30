@@ -39,4 +39,147 @@
   padding-left: 0px;
   padding-right: 0px;
   margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status-filter {
+  width: 100%;
+  position: relative;
+  padding: 10px;
+  color: var(--text-primary);
+  border-radius: 10px;
+  background-color: var(--bg-secondary);
+  outline: none;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: 40px;
+}
+
+.status-filter:focus {
+  outline: none;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.status-filter:disabled {
+  background-color: var(--bg-surface);
+}
+
+.status-filter::placeholder {
+  color: var(--text-secondary);
+}
+
+.status-filter:hover {
+  background-color: var(--bg-secondary);
+}
+
+.select-icon {
+  right: 5px;
+  top: 10px;
+  color: var(--text-primary);
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  position: absolute;
+  z-index: 500;
+}
+
+.status-option {
+  outline: none;
+  border: none;
+}
+
+.status-option:hover {
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.status-option:focus {
+  outline: none;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.status {
+  width: 20%;
+  position: relative;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.date-block {
+  width: 30%;
+  margin-right: 40px;
+}
+
+.date {
+  width: 100%;
+  padding: 10px;
+  color: var(--text-primary);
+  border-radius: 10px;
+  background-color: var(--bg-secondary);
+  outline: none;
+  border: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.date-picker {
+  width: 100%;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  border: none;
+  color: var(--text-primary);
+  padding: 10px;
+}
+
+.date-picker:disabled {
+  background-color: var(--bg-surface);
+}
+
+.date-picker::placeholder {
+  color: var(--text-secondary);
+}
+
+input[type='date']::-webkit-calendar-picker-indicator {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%23ff5733" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>');
+  cursor: pointer;
+}
+
+::-webkit-datetime-edit {
+  padding: 2px;
+}
+
+/* Separate text segments (Month, Day, Year) */
+::-webkit-datetime-edit-fields-wrapper {
+  font-weight: bold;
+}
+
+/* Individual date component text color */
+::-webkit-datetime-edit-day-field {
+  color: #ff4081;
+}
+::-webkit-datetime-edit-month-field {
+  color: #00e676;
+}
+::-webkit-datetime-edit-year-field {
+  color: #00b0ff;
 }
