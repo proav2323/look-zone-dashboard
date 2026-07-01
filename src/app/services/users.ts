@@ -4,6 +4,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { RedirectCommand, Router } from '@angular/router';
 import { API_URL } from '../../imp';
 import { Toaster } from './toaster';
+import { map, share, take } from 'rxjs';
 
 @Service()
 export class Users {
@@ -84,6 +85,9 @@ export class Users {
       });
   }
 
-  getUserByid() {}
+  getUserByid(id: string) {
+    return this.http.get<user>(`${this.API_URL}/auth/user/${id}`).pipe(share()).pipe(take(1));
+  }
+
   changeRoles() {}
 }

@@ -1,6 +1,19 @@
 @if (isLoading() === true) {
   <app-loader [size]="'large'"></app-loader>
-} @else if (error() !== null && orders().length === 0) {
+} @else if (error() !== null) {
+  <div class="container">
+    <div class="content">
+      <span class="heading">Orders</span>
+      <div class="error-block">
+        <span class="error-text">Error: {{ error() }}</span>
+      </div>
+    </div>
+  </div>
+} @else if (showOrderDetailsDisplay() === true) {
+  <app-order-details
+    [orderId]="selectedId()"
+    [closeDetails]="() => closeDeatils()"
+  ></app-order-details>
 } @else {
   <div class="container">
     <div class="content">
@@ -52,7 +65,7 @@
           <select
             class="status-filter"
             [formControl]="select"
-            [disabled]="isLoading() || isUserLoading()"
+            [disabled]="isLoading() || loading()"
           >
             @for (stat of status; track stat) {
               <option class="status-option" [value]="stat">
@@ -79,7 +92,67 @@
           </div>
         </div>
       </div>
-      <div class="orders-block"></div>
+      <div class="orders-block">
+        @if (orders().length === 0) {
+          <div class="no-orders">
+            <span class="no-orders-text">No orders found</span>
+          </div>
+        } @else {
+          <table class="orders-table">
+            <thead class="orders-table-head">
+              <tr class="orders-table-row">
+                <th class="orders-table-cell">Order ID</th>
+                <th class="orders-table-cell">Customer Name</th>
+                <th class="orders-table-cell">Date</th>
+                <th class="orders-table-cell">Status</th>
+                <th class="orders-table-cell">Total Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (order of orders(); track order) {
+                <tr class="orders-table-row" (click)="showOrderDetails(order._id)">
+                  <td class="orders-table-cell">{{ order._id }}</td>
+                  <td class="orders-table-cell">
+                    <app-user-display [id]="order.userId"></app-user-display>
+                  </td>
+                  <td class="orders-table-cell">{{ order.date | date: 'shortDate' }}</td>
+                  <td class="orders-table-cell">
+                    <select
+                      class="status-filter"
+                      [style]="
+                        order.status === 'delivered'
+                          ? 'color: green'
+                          : order.status === 'canceled'
+                            ? 'color: red'
+                            : order.status === 'shipped'
+                              ? 'color: blue'
+                              : order.status === 'return intiated' || order.status === 'returned'
+                                ? 'color: orange'
+                                : 'color: var(--text-primary)'
+                      "
+                      [disabled]="isLoading() || loading()"
+                      (input)="changeStatus($event, order._id)"
+                    >
+                      @for (stat of status; track stat) {
+                        <option
+                          class="status-option"
+                          [value]="stat"
+                          [selected]="order.status === stat"
+                        >
+                          {{ stat }}
+                        </option>
+                      }
+                    </select>
+                  </td>
+                  <td class="orders-table-cell" style="color: red; font-weight: bold">
+                    {{ order.payment | currency: 'USD' : 'symbol' : '1.2-2' }}
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        }
+      </div>
     </div>
   </div>
 }

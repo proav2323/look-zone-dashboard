@@ -1,0 +1,9 @@
+@if (data$ | async; as data) {
+  @if (type === 'user') {
+    {{ data.name }}
+  } @else if (type === 'category') {
+    {{ data.name }}
+  }
+} @else {
+  <app-loader [size]="'small'" [width]="'1'"></app-loader>
+}

@@ -7,7 +7,7 @@
   flex-direction: row;
   align-items: start;
   justify-content: start;
-  background-color: var(--bg-surface);
+  background-color: var(--bg-secondary);
   margin: 10px;
   width: auto;
 }

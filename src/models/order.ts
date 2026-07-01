@@ -6,7 +6,7 @@ export interface order {
   cart: cart;
   address: address;
   payment: number;
-  date: number;
+  date: string;
   status: string;
   userId: string;
 }

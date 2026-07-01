@@ -1,0 +1,16 @@
+@if (isLoading() === true) {
+  <app-loader [size]="'large'"></app-loader>
+} @else if (error() !== null) {
+  <div class="error-message">{{ error() }}</div>
+} @else {
+  @if (order() === null) {
+    <div class="error-message">Order not found.</div>
+  } @else {
+    <div class="order-details">
+      <div class="order-div">
+        <span class="item">{{ order()!._id }}</span>
+        <mat-icon fontIcon="'cancel'" class="cancel-icon" (click)="closeDetails()"></mat-icon>
+      </div>
+    </div>
+  }
+}

@@ -8,12 +8,27 @@ import { MatIcon } from '@angular/material/icon';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { JsonPipe } from '@angular/common';
+import { AsyncPipe, CurrencyPipe, DatePipe, JsonPipe, NgIf } from '@angular/common';
 import { Theme } from '../../services/theme';
+import { Users } from '../../services/users';
+import { BehaviorSubject, of, share, switchMap, take } from 'rxjs';
+import { UserDisplay } from '../user-display/user-display';
+import { OrderDetails } from '../order-details/order-details';
 
 @Component({
   selector: 'app-orders',
-  imports: [Card, Loader, MatIcon, ReactiveFormsModule, MatFormFieldModule, MatDatepickerModule],
+  imports: [
+    Card,
+    Loader,
+    MatIcon,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    DatePipe,
+    CurrencyPipe,
+    UserDisplay,
+    OrderDetails,
+  ],
   templateUrl: './orders.html',
   styleUrl: './orders.css',
 })
@@ -22,11 +37,14 @@ export class Orders {
   activatedRoute = inject(ActivatedRoute);
   themeService = inject(Theme);
   router = inject(Router);
+  usersService = inject(Users);
   isLoading: Signal<boolean> = computed(() => this.ordersService.isLoading());
   error: Signal<string | null> = computed(() => this.ordersService.errorOccured());
   orders: Signal<order[]> = computed(() => this.ordersService.orders());
   statsSelected = signal('all status');
   theme = computed(() => this.themeService.theme());
+  selectedId = signal<string | null>(null);
+  showOrderDetailsDisplay = signal(false);
   status: string[] = [
     'all status',
     'ordered',
@@ -34,15 +52,21 @@ export class Orders {
     'shipped',
     'out for delivery',
     'delivered',
-    'cancelled',
+    'canceled',
     'return intiated',
     'returned',
   ];
   select = new FormControl<string>('all status');
   dateStart = new FormControl<string | null>(null);
   dateEnd = new FormControl<string | null>(null);
-  isUserLoading = signal(false);
-  form = new FormGroup({ status: this.select, dateStart: this.dateStart, dateEnd: this.dateEnd });
+  loading = signal(false);
+  orderStatusSelect = new FormControl<string>('');
+  form = new FormGroup({
+    status: this.select,
+    dateStart: this.dateStart,
+    dateEnd: this.dateEnd,
+    orderStatusSelect: this.orderStatusSelect,
+  });
 
   constructor() {
     this.getQuery();
@@ -161,5 +185,22 @@ export class Orders {
       .then(() => {
         this.showFilters();
       });
+  }
+
+  changeStatus(event: Event, orderId: string) {
+    const selectElement = event.target as HTMLSelectElement;
+    const newStatus = selectElement.value;
+
+    this.ordersService.changeStatus(orderId, newStatus, this.loading);
+  }
+
+  showOrderDetails(orderId: string) {
+    this.selectedId.set(orderId);
+    this.showOrderDetailsDisplay.set(true);
+  }
+
+  closeDeatils() {
+    console.log('hello');
+    this.showOrderDetailsDisplay.set(false);
   }
 }
